@@ -58,7 +58,7 @@ INNER JOIN unicorn_industries ui
 	ON uc.company_id = ui.company_id 
 INNER JOIN unicorn_funding uf 
 	ON uc.company_id = uf.company_id 
-WHERE uc.country = 'Indonesia'
+--WHERE uc.country = 'Indonesia'
 ORDER BY 6 DESC;
 
 -- soal nomor 6
@@ -176,10 +176,10 @@ ON ui2.company_id = uf.company_id
 GROUP BY 1,2
 )
 SELECT
-	y.*,
-	SUM(total_company) OVER (PARTITION BY y.industry) total_per_industry
+	y.* /*,
+	SUM(total_company) OVER (PARTITION BY y.industry) total_per_industry*/
 FROM yearly_rank y
 INNER JOIN top_3 t
 	ON y.industry = t.industry
 WHERE year_joined IN (2019,2020,2021)
-ORDER BY 5 DESC, 1;
+ORDER BY /*5 DESC,*/ 1, 2 DESC;
